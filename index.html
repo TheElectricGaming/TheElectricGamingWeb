@@ -1,0 +1,304 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Electric Gaming</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background: radial-gradient(ellipse at center, #000 0%, #010a0a 100%);
+      font-family: 'Orbitron', sans-serif;
+      color: cyan;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+
+    /* Electric pulse animation background */
+    body::before {
+      content: "";
+      position: fixed;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: repeating-radial-gradient(circle, #0ff 0%, #000 30%, #0ff 60%);
+      animation: pulse 10s infinite alternate;
+      opacity: 0.05;
+      z-index: 0;
+    }
+
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.5); }
+    }
+
+
+    header {
+      text-align: center;
+      padding: 40px 20px;
+      background: linear-gradient(to right, #00f2ff, #002233);
+      box-shadow: 0 0 20px #00ffff;
+      z-index: 1;
+      position: relative;
+    }
+
+
+    header h1 {
+      font-size: 3rem;
+      text-shadow: 0 0 10px #00f2ff, 0 0 30px #00f2ff;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
+
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px #00f2ff, 0 0 30px #00f2ff;
+      }
+      to {
+        text-shadow: 0 0 20px #00f2ff, 0 0 50px #00f2ff;
+      }
+    }
+
+
+    .tagline {
+      font-size: 1.2rem;
+      margin-top: 10px;
+    }
+
+
+    .nav-buttons {
+      margin-top: 20px;
+    }
+
+
+    .nav-buttons button {
+      background: black;
+      border: 2px solid cyan;
+      color: cyan;
+      padding: 10px 20px;
+      font-size: 1rem;
+      margin: 5px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px cyan;
+      cursor: pointer;
+      transition: 0.3s;
+      z-index: 2;
+    }
+
+
+    .nav-buttons button:hover {
+      background: cyan;
+      color: black;
+      box-shadow: 0 0 20px cyan, 0 0 30px cyan;
+      transform: scale(1.05);
+    }
+
+
+    section {
+      padding: 60px 20px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+
+    iframe {
+      border-radius: 10px;
+      box-shadow: 0 0 15px #00ffff;
+    }
+
+
+    .video-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+
+    .video-thumb {
+      max-width: 300px;
+    }
+
+
+    .video-thumb p {
+      margin-top: 10px;
+    }
+
+
+    .music-gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+    }
+
+
+    .track {
+      background: rgba(0, 255, 255, 0.05);
+      padding: 20px;
+      border: 1px solid cyan;
+      border-radius: 10px;
+      box-shadow: 0 0 12px cyan;
+    }
+
+
+    #links, #news, #games {
+      background: rgba(0, 255, 255, 0.02);
+      box-shadow: 0 0 25px #00ffff33 inset;
+      padding: 40px;
+      border-radius: 20px;
+      margin: 20px;
+    }
+
+
+    #links a {
+      color: #00ffff;
+      text-decoration: none;
+      font-size: 1.2rem;
+      transition: 0.3s;
+    }
+
+
+    #links a:hover {
+      color: white;
+      text-shadow: 0 0 15px cyan;
+    }
+
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #000;
+      box-shadow: 0 -5px 15px cyan;
+    }
+
+
+    .social-icons a {
+      font-size: 1.5rem;
+      margin: 0 10px;
+      color: cyan;
+      transition: 0.3s;
+    }
+
+
+    .social-icons a:hover {
+      transform: scale(1.2);
+      text-shadow: 0 0 10px cyan;
+    }
+  </style>
+</head>
+<body>
+  <audio id="click-sound" src="click.mp3" preload="auto"></audio>
+
+
+  <header>
+    <h1>The Electric Gaming</h1>
+    <p class="tagline">Neon. Beats. Power.</p>
+    <div class="nav-buttons">
+      <button onclick="playSound(); scrollToSection('music')">🎵 Music</button>
+      <button onclick="playSound(); scrollToSection('videos')">📺 Videos</button>
+      <button onclick="playSound(); scrollToSection('links')">🔗 Links</button>
+    </div>
+  </header>
+
+
+  <section id="featured-video">
+    <h2>🎬 Featured Video</h2>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/XVsu1XPnaw8" allowfullscreen></iframe>
+  </section>
+
+
+  <section id="videos">
+    <h2>📺 Video Grid</h2>
+    <div class="video-grid">
+      <div class="video-thumb">
+        <iframe width="300" height="200" src="https://www.youtube.com/embed/XVsu1XPnaw8" allowfullscreen></iframe>
+        <p>Power of the Beat</p>
+      </div>
+      <div class="video-thumb">
+        <iframe width="300" height="200" src="https://www.youtube.com/embed/05yojpWqDfc" allowfullscreen></iframe>
+        <p>Epic Track</p>
+      </div>
+      <div class="video-thumb">
+        <iframe width="300" height="200" src="https://www.youtube.com/embed/O8inlyhrVZA" allowfullscreen></iframe>
+        <p>Rickroll</p>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="music">
+    <h2>🎵 Music Gallery</h2>
+    <div class="music-gallery">
+      <div class="track">
+        <p>Flashdrive</p>
+        <audio controls src="003- Flashdrive.mp3"></audio>
+      </div>
+      <div class="track">
+        <p>Glitch Phase</p>
+        <audio controls src="002- Glitch Phase.mp3"></audio>
+      </div>
+      <div class="track">
+        <p>Neon Drift</p>
+        <audio controls src="001- Neon Drift.mp3"></audio>
+      </div>
+    </div>
+  </section>
+
+
+  <section id="news">
+    <h2>📰 Updates</h2>
+    <ul>
+      <li>🔥 New track “Flashdrive” now live!</li>
+      <li>⚡ Featured video updated!</li>
+      <li>🎧 Added Neon Drift & Glitch Phase</li>
+    </ul>
+  </section>
+
+
+  <section id="games">
+    <h2>🎮 Game Projects</h2>
+    <p>New stickmen tower defense game coming soon! Stay tuned!</p>
+  </section>
+
+
+  <section id="links">
+    <h2>🔗 Links</h2>
+    <ul>
+      <li><a href="https://www.youtube.com/@TheElectricGaming1" target="_blank">YouTube Channel</a></li>
+      <li><a href="https://discord.gg/zqqpdmwupw" target="_blank">Discord Server</a></li>
+      <li><a href="https://www.roblox.com/users/4894430277/profile" target="_blank">Roblox</a></li>
+    </ul>
+  </section>
+
+
+  <footer>
+    <p>Follow us:</p>
+    <div class="social-icons">
+      <a href="https://www.youtube.com/@TheElectricGaming" target="_blank">📺</a>
+      <a href="https://discord.gg/zqqpdmwupw" target="_blank">💻</a>
+      <a href="https://www.roblox.com/users/4894430277/profile" target="_blank">🎵</a>
+    </div>
+    <p style="margin-top: 10px;">&copy; 2025 The Electric Gaming</p>
+  </footer>
+
+
+  <script>
+    function scrollToSection(id) {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }
+
+
+    function playSound() {
+      const audio = document.getElementById('click-sound');
+      audio.currentTime = 0;
+      audio.play();
+    }
+  </script>
+</body>
+</html>
